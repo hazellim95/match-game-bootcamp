@@ -44,8 +44,13 @@ const squareClick = (cardElement, column, row) => {
       cardElement.innerText = clickedCard.name;
     } else {
       console.log("not a match");
+      // turn the card over
+      cardElement.innerText = clickedCard.name;
       // turn this card back over
-      firstCardElement.innerText = "";
+      setTimeout(() => {
+        cardElement.innerText = "";
+        firstCardElement.innerText = "";
+      }, 3000);
     }
 
     // reset the first card
