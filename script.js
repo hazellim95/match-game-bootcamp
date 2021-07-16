@@ -5,6 +5,9 @@ let firstCard = null;
 let firstCardElement;
 let deck;
 
+// global variable to represent state of game - whether can continue playing, or time is up
+let timeUp = false;
+
 const message = document.createElement("div");
 message.classList.add("output");
 
@@ -197,11 +200,23 @@ const initGame = () => {
       board[i].push(deck.pop());
     }
   }
-
   const boardEl = buildBoardElements(board);
 
   document.body.appendChild(boardEl);
   document.body.appendChild(message);
+
+  //If time reaches 30 seconds, restart game
+  setTimeout(() => {
+    // get all square elements
+    const cardElements = document.getElementsByClassName("square");
+    // set all of them to blank through a loop
+    for (i = 0; i < cardElements.length; i++) {
+      cardElements[i].innerText = "";
+    }
+    // output message that time is up
+    output("Time's up! Game has restarted.");
+    console.log("Time's up! Game has restarted.");
+  }, 30000);
 };
 
 initGame();
