@@ -10,6 +10,7 @@ let timeUp = false;
 
 const message = document.createElement("div");
 message.classList.add("output");
+message.innerText = "Hello! Click to get matching cards. You have 3 minutes.";
 
 // function to output message into message DOM element
 const output = (text) => {
@@ -187,6 +188,7 @@ const shuffleCards = (cards) => {
 };
 
 const initGame = () => {
+  console.log("Starting game..");
   // create this special deck by getting the doubled cards and
   // making a smaller array that is ( boardSize squared ) number of cards
   let doubleDeck = makeDeck();
@@ -216,7 +218,7 @@ const initGame = () => {
     // output message that time is up
     output("Time's up! Game has restarted.");
     console.log("Time's up! Game has restarted.");
-  }, 30000);
+  }, 180000);
 };
 
 initGame();
